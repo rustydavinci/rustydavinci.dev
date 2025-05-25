@@ -1,0 +1,272 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import BrazilHibiscus from "../../../images/brazil-hibiscus.jpg";
+import BrazilHibiscusVideo from "../../../videos/brazil-hibiscus.mp4";
+import MexicoCempasuchil from "../../../images/mexico-cempasuchil.jpg";
+import MexicoCempasuchilVideo from "../../../videos/mexico-cempasuchil.mp4";
+import NewOrleansFleurDeLis from "../../../images/new-orleans-fleur-de-lis.jpg";
+import NewOrleansFleurDeLisVideo from "../../../videos/new-orleans-fleur-de-lis.mp4";
+import UruguayErythrinaCristaGalli from "../../../images/uruguay-erythrina-crista-galli.jpg";
+import UruguayErythrinaCristaGalliVideo from "../../../videos/uruguay-erythrina-crista-galli.mp4";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+    <div class="container inter-regular">
+        <div class="intro">
+            <h1 class="miss-fajardose-regular">Flower <span>Stamps</span></h1>
+            <p>
+                Mientras estoy lejos, quise encontrar una forma de estar cerca
+                de ti, de recordarte cada día cuánto te amo y lo especial que
+                eres para mí.
+            </p>
+            <p>
+                Aquí encontrarás un jardín digital: cada día, una nueva flor se
+                abrirá solo para ti. Cada una lleva consigo una historia, un
+                detalle de lo que siento por ti. Como estampillas de amor, estas
+                flores marcan los días mientras no podamos compartir juntos.
+            </p>
+            <p>
+                Descúbrelas una por una. Deja que cada flor te hable, te abrace,
+                y te recuerde que, aunque esté lejos, mi corazón sigue contigo.
+            </p>
+            <p class="bigger">
+                Te amo. Te amo mucho. <em>Te amo infinito.</em> &hearts;
+            </p>
+        </div>
+        <div class="stamps">
+            <div id="day1" style="display: none;">
+                <a href="/explorations/flower-stamps/brazil-hibiscus">
+                <Image
+                    src={BrazilHibiscus}
+                    alt="Brazil - Hibiscus"
+                    width={512}
+                    height={512}
+                    priority
+                />
+                <video loop autoplay muted>
+                    <source src={BrazilHibiscusVideo} />
+                </video>
+                </a>
+            </div>
+            <div id="day2" style="display: none;">
+                <a href="/explorations/flower-stamps/new-orleans-fleur-de-lis">
+                <Image
+                    src={NewOrleansFleurDeLis}
+                    alt="New Orleans - Fleur de Lis"
+                    width={512}
+                    height={512}
+                    priority
+                />
+                <video loop autoplay muted>
+                    <source src={NewOrleansFleurDeLisVideo} />
+                </video>
+                </a>
+            </div>
+            <div id="day3" style="display: none;">
+                <a href="/explorations/flower-stamps/mexico-cempasuchil">
+                <Image
+                    src={MexicoCempasuchil}
+                    alt="Mexico - Cempasuchil"
+                    width={512}
+                    height={512}
+                    priority
+                />
+                <video loop autoplay muted>
+                    <source src={MexicoCempasuchilVideo} />
+                </video>
+                </a>
+            </div>
+            <div id="day4" style="display: none;">
+                <a href="/explorations/flower-stamps/uruguay-erythrina-crista-galli">
+                <Image
+                    src={UruguayErythrinaCristaGalli}
+                    alt="Uruguay - Erythrina Crista-Galli"
+                    width={512}
+                    height={512}
+                    priority
+                />
+                <video loop autoplay muted>
+                    <source src={UruguayErythrinaCristaGalliVideo} />
+                </video>
+                </a>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style is:global>
+    ::selection {
+        background-color: rgb(124, 134, 213);
+        color: wheat;
+    }
+
+    ::-moz-selection {
+        background-color: rgb(124, 134, 213);
+        color: wheat;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        background-color: black;
+    }
+
+    .miss-fajardose-regular {
+        font-family: "Miss Fajardose", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .inter-regular {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+</style>
+
+<style>
+    h1 {
+        font-size: 18vw;
+        margin: 0;
+        line-height: 1;
+    }
+
+    h1 span {
+        color: rgb(124, 134, 213);
+    }
+
+    p {
+        line-height: 1.75;
+        font-size: 0.75rem;
+        color: rgb(92, 96, 142);
+    }
+
+    .bigger {
+        font-size: 0.85rem;
+        color: rgb(186, 191, 229);
+    }
+
+    .container {
+        min-height: 100vh;
+        margin: 0 auto;
+        color: rgb(214, 219, 240);
+        padding: 2rem 4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        background-image: linear-gradient(
+            to top,
+            rgb(11, 11, 29) 0%,
+            black 100%
+        );
+
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .stamps img {
+        padding: 2rem;
+
+        --r: 14px; /* control the radius of the circles */
+        padding: var(--r);
+        filter: drop-shadow(0 0 1px #0005) drop-shadow(0 0 1px #0005);
+        background: radial-gradient(50% 50%, #0000 65%, #fff 67%) round var(--r)
+            var(--r) / calc(2 * var(--r)) calc(2 * var(--r));
+    }
+
+    .stamps div {
+        position: relative;
+    }
+
+    .stamps video {
+        padding: 2rem;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    @media screen and (min-width: 850px) {
+        h1 {
+        font-size: 10vw;
+        line-height: 0.8;
+    }
+
+    h1 span {
+        font-size: 12.5vw;
+    }
+
+        .container {
+            flex-direction: row;
+            align-items: center;
+            padding: 2rem 12vw;
+
+
+             background-image: url("/bg.jpg"), linear-gradient(
+            to top,
+            rgb(11, 11, 29) 0%,
+            black 100%
+        );
+
+        background-position: bottom;
+
+        background-blend-mode: soft-light, normal;
+        }
+
+        .container .intro {
+            flex: 1;
+        }
+
+        .container .stamps {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .stamps div {
+            max-width: 50%;
+            padding: 1rem;
+        }
+    }
+</style>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  // Fixed global start date (May 25, 2025)
+  const globalStartDate = new Date('2025-05-21T13:00:00Z'); // UTC midnight
+
+  const now = new Date(); // Current date/time
+  const diffTime = now - globalStartDate;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+  // Reveal divs for each day that has passed (up to 4)
+  for (let i = 1; i <= 4; i++) {
+    if (i <= diffDays) {
+      const div = document.getElementById(`day${i}`);
+      if (div) div.style.display = 'block';
+    }
+  }
+});
+</script>

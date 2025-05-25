@@ -1,0 +1,494 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import BrazilHibiscus from "../../../images/brazil-hibiscus.jpg";
+import BrazilHibiscusVideo from "../../../videos/brazil-hibiscus.mp4";
+import MexicoCempasuchil from "../../../images/mexico-cempasuchil.jpg";
+import MexicoCempasuchilVideo from "../../../videos/mexico-cempasuchil.mp4";
+import NewOrleansFleurDeLis from "../../../images/new-orleans-fleur-de-lis.jpg";
+import NewOrleansFleurDeLisVideo from "../../../videos/new-orleans-fleur-de-lis.mp4";
+import UruguayErythrinaCristaGalli from "../../../images/uruguay-erythrina-crista-galli.jpg";
+import UruguayErythrinaCristaGalliVideo from "../../../videos/uruguay-erythrina-crista-galli.mp4";
+
+export function getStaticPaths() {
+    return [
+        { params: { flower: "brazil-hibiscus" } },
+        { params: { flower: "mexico-cempasuchil" } },
+        { params: { flower: "new-orleans-fleur-de-lis" } },
+        { params: { flower: "uruguay-erythrina-crista-galli" } },
+    ];
+}
+
+type Flowers =
+    | "brazil-hibiscus"
+    | "mexico-cempasuchil"
+    | "new-orleans-fleur-de-lis"
+    | "uruguay-erythrina-crista-galli";
+
+const flowers: Record<
+    Flowers,
+    { name: string; origin: string; video: string, iframe: string, description: string, image: ImageMetadata }
+> = {
+    "brazil-hibiscus": {
+        name: "Hibiscus",
+        origin: "Brazil",
+        image: BrazilHibiscus,
+        video: BrazilHibiscusVideo,
+        iframe: `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Uj1g5oumzWY?si=xOqoU41_f7ItCiHT&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        description: `<h3>🌱 Descubrimiento y origen</h3>
+            <p>
+                El Hibiscus solis fue identificado por primera vez en 1854 por
+                el botánico alemán Karl Friedrich Hartweg, durante una
+                expedición al corazón de la Mata Atlántica brasileña. Lo
+                encontró creciendo en un claro soleado, rodeado de helechos y
+                bromelias, a poca distancia de una pequeña comunidad caiçara en
+                el estado de Espírito Santo. A diferencia de otras variedades de
+                hibisco más comunes en el trópico, el H. solis presentaba
+                pétalos con una sorprendente transición de color: desde un
+                amarillo pálido en los bordes hasta un rojo intenso en el
+                centro, con venas lineales que recordaban a los rayos del sol.
+                Esto, junto a su hábito de abrirse plenamente solo entre las
+                10 a.m. y las 2 p.m., inspiró su nombre botánico: solis, “del
+                sol”. Los primeros ejemplares fueron recolectados, secados y
+                enviados a Europa, donde fueron catalogados en herbarios de
+                Viena y Berlín, aunque por razones burocráticas y científicas
+                aún no ha sido oficialmente clasificado como especie
+                independiente — de ahí el uso provisorio del nombre.
+            </p>
+
+            <h3>🌿 Usos tradicionales y propiedades</h3>
+
+            <p>
+                Los pueblos tradicionales de la Mata Atlántica, como los
+                caiçaras y comunidades indígenas tupiniquim, han empleado el
+                Hibiscus solis en su medicina natural por generaciones. Aunque
+                no es tan extendido como el hibisco común (Hibiscus sabdariffa),
+                su uso se transmite oralmente y forma parte de un conocimiento
+                comunitario muy valorado. Principales usos documentados: • Té
+                digestivo: Una infusión suave de los pétalos se utiliza para
+                calmar molestias estomacales, especialmente después de comidas
+                pesadas o picantes. • Tónico para la fatiga: Combinado con hojas
+                de yerba-mate y raíz de jucá, se prepara un elixir energizante,
+                utilizado en jornadas de pesca o recolección. • Cataplasmas
+                calmantes: Los pétalos macerados se aplican sobre la piel
+                irritada por picaduras de insectos o exposición prolongada al
+                sol. • Baños florales: Algunas comunidades lo emplean en
+                rituales de baño para la “renovación del ánimo”, particularmente
+                en momentos de duelo o despedida. Estudios preliminares en la
+                Universidad Federal de Minas Gerais han identificado en el H.
+                solis una alta concentración de flavonoides y compuestos
+                antioxidantes, similares a los de su pariente africano. Estas
+                investigaciones abren la puerta a futuros estudios
+                farmacológicos.
+            </p>
+
+            <h3>🌿 Ecología y conservación</h3>
+            <p>
+                El Hibiscus solis es una especie endémica y extremadamente
+                localizada. Se estima que su presencia natural se restringe a
+                menos de 15 km² en fragmentos de selva primaria del litoral
+                brasileño. Está amenazada por: • La expansión urbana
+                descontrolada. • La deforestación para agricultura. • La pérdida
+                de sus polinizadores naturales, principalmente abejas nativas
+                como la Melipona quadrifasciata y colibríes endémicos. Hoy en
+                día, su conservación depende casi exclusivamente de programas de
+                viveros de reproducción en jardines botánicos como el de Río de
+                Janeiro y Campinas. Varias ONG locales están trabajando para
+                reintroducirla en áreas protegidas y educar sobre su valor
+                simbólico y ecológico.
+            </p>
+
+            <h3>🌼 Curiosidades</h3>
+            <p>
+                • Su flor solo dura un día, pero cada arbusto puede florecer
+                durante varias semanas, abriendo una flor distinta cada mañana.
+                • En algunas comunidades se la conoce como “Flor da Partida”, ya
+                que suele florecer más intensamente en la época de cambio de
+                estación o despedidas personales. Se regala como símbolo de amor
+                que perdura a la distancia. • Su imagen fue utilizada en los
+                años 70 por un colectivo artístico brasileño como ícono de la
+                resistencia cultural frente a la dictadura, por su fragilidad y
+                belleza persistente en medio de la adversidad.
+            </p><h3>💌 Una flor para ti</h3><p>
+                El Hibiscus solis representa el calor de lo que se guarda
+                incluso en la ausencia. Una flor que crece donde hay luz, que
+                sobrevive en espacios escondidos, y que se abre solo cuando el
+                día está en su punto más luminoso. Esta flor, como este gesto,
+                es para recordarte que incluso desde lejos, hay un sol que
+                piensa en ti.
+            </p>`
+    },
+    "mexico-cempasuchil": {
+        name: "Cempasúchil",
+        origin: "Mexico",
+        image: MexicoCempasuchil,
+        video: MexicoCempasuchilVideo,
+        iframe: `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/42gS2guJZO4?si=7Tuv6W5UbNfmFuM6&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        description: `<h3>🌞 La flor que guía a las almas</h3>
+            <p>
+                El Cempasúchil nace del sol. Su nombre proviene del náhuatl cempohualxóchitl, que significa “veinte flores” o “flor de muchos pétalos”. Según la leyenda mexica, esta flor fue creada por los dioses a partir del amor eterno entre Xóchitl y Huitzilin: dos jóvenes amantes que, tras la muerte de él en batalla, fueron reunidos por el poder del sol en forma de esta flor dorada.
+
+Desde entonces, cada Día de Muertos, se dice que el aroma del cempasúchil abre caminos desde el más allá hasta nuestro mundo, para que las almas encuentren el regreso a casa. Por eso se colocan pétalos en los altares, en caminos de bienvenida, y se le rinde tributo con fuego, comida y memoria.
+            </p>
+
+            <h3>🌿 Sabiduría ancestral y usos medicinales</h3>
+
+            <p>
+               Mucho antes de su papel en el Día de Muertos, el cempasúchil ya era valorado por los pueblos originarios por sus propiedades curativas. Entre los usos tradicionales más conocidos:
+	•	🌱 Infusión para malestares digestivos: Se utiliza en tés suaves para aliviar cólicos, náuseas y parasitosis intestinal.
+	•	🌼 Calmante y relajante: En baños florales para aliviar el estrés, y en compresas para tratar inflamaciones leves.
+	•	💫 Amuleto protector: Los antiguos mexicas lo usaban como ofrenda al sol y como flor de protección espiritual en rituales de paso.
+
+Hoy en día, su extracto también se usa en cosmética y como colorante natural, gracias a su alto contenido de luteína.
+            </p>
+
+            <h3>✨ Datos curiosos que enamoran</h3>
+            <p>
+                El cempasúchil es una de las flores más cultivadas de México, especialmente en regiones como Puebla, Oaxaca, Estado de México y Michoacán.
+	•	A pesar de su conexión con la muerte, es una flor que celebra la vida, el reencuentro, y el amor que no termina con el tiempo.
+	•	Su color tradicional es el naranja dorado, pero también existen variedades en tonos amarillos, blancos y rojos.
+	•	En algunos pueblos se cree que si una persona sueña con cempasúchiles, es porque un ser querido quiere hablarle desde el otro lado.
+            </p>
+
+            <h3>💌 Una flor para ti</h3><p>
+                El Cempasúchil es la flor que recuerda que el amor trasciende la distancia, incluso la más larga de todas: la que separa la vida de la muerte. Es la flor de los recuerdos, de los nombres que seguimos pronunciando con ternura, y de los abrazos que siguen vivos en la memoria.
+
+Hoy, esta flor no llega desde un altar… sino desde mi corazón. Para recordarte que estés donde estés, siempre sabrás volver. 🌼
+            </p>`
+    },
+    "new-orleans-fleur-de-lis": {
+        name: "Fleur de Lis",
+        origin: "New Orleans (USA)",
+        image: NewOrleansFleurDeLis,
+        video: NewOrleansFleurDeLisVideo,
+        iframe: `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/VVmZ20tdJog?si=tLH9NOmh8ABiTNF3&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        description: `<h3>🌱 Raíces en el barro y el alma</h3>
+            <p>
+                La Fleur de Lis, más que una flor, es un símbolo vivo del sur de Estados Unidos. Su nombre viene del francés y significa literalmente “flor de lirio”. Aunque muchos la conocen como un emblema heráldico, pocos saben que su forma está inspirada en una flor real: una variedad de iris silvestre que florece entre los pantanos y humedales del sur de Luisiana.
+
+Creciente en condiciones extremas, la Iris brevicaulis es una flor que emerge donde otros no pueden: entre barro, sombra y humedad. En su forma y color —una fusión entre violeta, azul profundo y blanco perla— se siente la esencia de Nueva Orleans: belleza nacida de la mezcla, la resistencia y la historia.
+            </p>
+
+            <h3>🎶 La flor que danza con el jazz</h3>
+
+            <p>
+                Desde los tiempos coloniales, la Fleur de Lis ha sido emblema de la ciudad. Pero en Nueva Orleans no se venera como símbolo rígido, sino como una flor que late con la música, que florece con las emociones.
+
+Durante el siglo XX, cuando el jazz se expandía desde Bourbon Street al mundo, la Fleur de Lis fue adoptada por músicos y poetas como símbolo de identidad y rebeldía. Se decía que quien regalaba una de estas flores estaba dejando un mensaje codificado: “mi corazón pertenece a este ritmo… y a ti”.
+            </p>
+
+            <h3>🌿 Usos tradicionales y simbólicos</h3>
+            <p>
+                Aunque no tiene una tradición médica tan rica como otras especies, el iris de Luisiana ha sido valorado por pueblos originarios del sur (como los Chitimacha) por sus cualidades simbólicas:
+	•	Protección espiritual: Se creía que plantarlo cerca de las casas alejaba tormentas y malos espíritus, gracias a su capacidad de crecer donde las aguas se desbordan.
+	•	Símbolo de resiliencia: Se regalaba como señal de superación después de una pérdida o una catástrofe —algo que tomó más fuerza aún después del huracán Katrina en 2005.
+	•	Flor de duelo y de renacimiento: Común en altares, cementerios y celebraciones del Second Line, representa la tristeza y la celebración entrelazadas, como la música que define la ciudad.
+            </p>
+
+            <h3>🌀 Curiosidades botánicas y culturales</h3>
+            <p>
+                Su crecimiento horizontal, en lugar de vertical como otros lirios, le permite sobrevivir a inundaciones temporales y corrientes de agua.
+	•	El diseño de la Fleur de Lis está inspirado en tres pétalos erguidos del iris silvestre, y aparece en banderas, balcones y tatuajes por toda Nueva Orleans.
+	•	En 2018, la ciudad declaró oficialmente a la Fleur de Lis como símbolo de esperanza, unidad y memoria colectiva tras siglos de transformaciones sociales.
+            </p><h3>💌 Una flor para ti</h3><p>
+                La Fleur de Lis es la flor de lo que resiste sin endurecerse. De lo que florece en el barro sin perder su elegancia. Como Nueva Orleans, como la música que nunca muere. Como un corazón que sigue amando incluso cuando el mundo cambia.
+
+Esta flor no solo representa un lugar. Representa el alma que sabe cuándo llorar… y cuándo bailar.
+            </p>`
+    },
+    "uruguay-erythrina-crista-galli": {
+        name: "Erythrina Crista-Galli",
+        origin: "Uruguay",
+        image: UruguayErythrinaCristaGalli,
+        video: UruguayErythrinaCristaGalliVideo,
+        iframe: `<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Vr4QCB_xBaQ?si=R6InrD-w8omj2-5A&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+        description: `<h3>🔥 La flor que brota del coraje</h3>
+            <p>
+                Cuenta una antigua leyenda guaraní que la flor del ceibo nació del fuego de una mujer valiente. Anahí, una joven de una tribu indígena, fue capturada por los conquistadores españoles. En la oscuridad de su prisión, comenzó a cantar con la voz del río y del viento, tan profunda que conmovía incluso a sus captores. Pero una noche, logró escapar y fue perseguida. Al ser atrapada, fue condenada a morir en la hoguera.
+
+Dicen que mientras ardía, el fuego no consumió dolor, sino fuerza. Y al amanecer, en el lugar de su cuerpo, creció un árbol que nunca antes se había visto. Sus flores eran rojas como el fuego, como la sangre, como el canto que nunca se apagó. Así nació el ceibo: símbolo de lucha, belleza y resistencia.
+            </p>
+
+            <h3>🌳 El ceibo: un árbol entre el agua y el cielo</h3>
+
+            <p>
+                La Erythrina crista-galli es un árbol que crece a orillas de ríos, esteros y lagunas del sur de América, especialmente en los humedales del Río de la Plata, donde Uruguay encuentra su raíz. Puede alcanzar hasta 10 metros de altura, pero su fuerza está en lo sutil: en su corteza rugosa, en sus ramas torcidas por el viento y en sus flores, que brotan como antorchas entre el verde.
+
+Cada flor es un pequeño cuenco de color rojo escarlata o carmesí, con forma de crista (cresta de gallo), que atrae a colibríes, abejas y mariposas.
+            </p>
+
+            <h3>🌿 Usos tradicionales y curiosidades</h3>
+            <p>
+                Aunque no es tan ampliamente usado con fines medicinales, el ceibo ha tenido importancia simbólica y artesanal:
+	•	🌱 Remedios populares: En infusiones suaves, la corteza y las hojas se han usado tradicionalmente como sedante natural para calmar nervios y tratar insomnio.
+	•	🧵 Tintes naturales: De sus flores y corteza se extraen pigmentos rojizos que fueron utilizados para teñir telas por comunidades originarias.
+	•	🪵 Madera liviana: Aunque no es muy resistente, su madera ha servido para hacer pequeños utensilios, artesanías y máscaras rituales.
+            </p>
+
+            <h3>🇺🇾 Flor de identidad y de fuego lento</h3>
+            <p>
+                En 1942, Uruguay declaró al ceibo como su flor nacional, por su presencia natural en todo el territorio, pero sobre todo, por lo que representa: la belleza humilde, el arraigo al agua, la fuerza que crece sin hacer ruido.
+
+El ceibo no florece siempre, ni para cualquiera. Solo lo hace cuando el calor es constante y el río está cerca. Por eso, en el lenguaje popular, se dice que el ceibo florece cuando el corazón está listo para recordar.
+            </p><h3>💌 Una flor para ti</h3><p>
+                El Ceibo es una flor que no se impone, pero que nunca se olvida. Es la flor que resiste el viento del sur y florece sin pedir permiso. Hoy te la regalo no solo como símbolo de mi amor, sino como un deseo silencioso: que todo lo fuerte en ti siga floreciendo, incluso en los días grises.
+
+Donde haya un río, un recuerdo y un corazón encendido… allí florecerá un ceibo. 🔥🌺
+            </p>`
+    },
+};
+
+const { flower } = Astro.params;
+---
+
+<Layout>
+    <div class="container inter-regular">
+        <div class="intro">
+            <a href="/explorations/flower-stamps"
+                ><h1 class="miss-fajardose-regular">
+                    Flower <span>Stamps</span>
+                </h1></a
+            >
+
+            <div set:html={flowers[flower as Flowers].iframe} />
+
+            <h2>
+                Nombre: <em>{flowers[flower as Flowers].name}</em> &middot; Origen:
+                <em>{flowers[flower as Flowers].origin}</em>
+            </h2>
+
+            <div set:html={flowers[flower as Flowers].description} />
+            
+            <h3>📸 Fotografía</h3>
+            <a href={flowers[flower as Flowers].image.src} download><Image
+                    src={flowers[flower as Flowers].image}
+                    alt={`${flowers[flower as Flowers].origin} - ${flowers[flower as Flowers].name}`}
+                />
+                </a>
+            
+        </div>
+        <div class="stamps">
+            <div>
+                <Image
+                    src={flowers[flower as Flowers].image}
+                    alt={`${flowers[flower as Flowers].origin} - ${flowers[flower as Flowers].name}`}
+                    width={512}
+                    height={512}
+                    priority
+                />
+                <video loop autoplay muted>
+                    <source src={flowers[flower as Flowers].video} />
+                </video>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style is:global>
+    ::selection {
+        background-color: rgb(124, 134, 213);
+        color: wheat;
+    }
+
+    ::-moz-selection {
+        background-color: rgb(124, 134, 213);
+        color: wheat;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        background-color: black;
+    }
+
+    .miss-fajardose-regular {
+        font-family: "Miss Fajardose", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .inter-regular {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    p {
+        line-height: 1.5;
+        font-size: 0.95rem;
+        color: rgb(122, 128, 186);
+        text-align: justify;
+    }
+    
+    iframe {
+        margin-bottom: 3rem;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  height: auto;
+    }
+
+    h2 { 
+        margin-bottom: 3rem;
+    }
+
+    h3 {
+        margin: 2rem 0;
+        font-weight: normal;
+    }
+
+    img {
+        border-radius: 8px;
+    }
+</style>
+
+<style>
+    h1 {
+        font-size: 18vw;
+        margin: 0;
+        line-height: 1;
+    }
+
+    h1 span {
+        color: rgb(124, 134, 213);
+    }
+
+    h2 {
+        color: rgb(42, 49, 110);
+        font-size: 1.5rem;
+        line-height: 1.25;
+        font-weight: normal;
+    }
+
+    h2 em {
+        color: rgb(124, 134, 213);
+    }
+
+    h3 {
+        color: rgb(209, 212, 241);
+        font-size: 1.25rem;
+        line-height: 0.75;
+        font-weight: normal;
+        margin-top: 3rem;
+    }
+
+    iframe {
+                margin-bottom: 3rem;
+
+    }
+
+    .bigger {
+        font-size: 0.85rem;
+        color: rgb(124, 134, 213);
+    }
+
+    .container {
+        min-height: 100vh;
+        margin: 0 auto;
+        color: rgb(214, 219, 240);
+        padding: 2rem 4rem;
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 3rem;
+
+        background-image: linear-gradient(
+            to top,
+            rgb(11, 11, 29) 0%,
+            black 100%
+        );
+
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .stamps img {
+        padding: 2rem;
+
+        --r: 14px; /* control the radius of the circles */
+        padding: var(--r);
+        filter: drop-shadow(0 0 1px #0005) drop-shadow(0 0 1px #0005);
+        background: radial-gradient(50% 50%, #0000 65%, #fff 67%) round var(--r)
+            var(--r) / calc(2 * var(--r)) calc(2 * var(--r));
+    }
+
+    .stamps div {
+        position: relative;
+    }
+
+    .stamps video {
+        padding: 2rem;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    @media screen and (min-width: 850px) {
+        
+        .container {
+        min-height: 100vh;
+        margin: 0 auto;
+        background-color: black;
+        color: rgb(214, 219, 240);
+        padding: 8rem 8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
+        background-image: url("/bg.jpg"), linear-gradient(
+            to bottom,
+            rgb(11, 11, 29) 0%,
+            black 100%
+        );
+
+        background-position: bottom;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        background-blend-mode: soft-light, normal;
+    }
+
+         h1 {
+        font-size: 8vw;
+        line-height: 0.8;
+    }
+
+    h1 span {
+        font-size: 10.5vw;
+    }
+
+     .container {
+            flex-direction: row-reverse;
+     }
+        .container .intro {
+            flex: 2;
+        }
+
+        .container .stamps {
+            flex: 2;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .stamps div {
+            max-width: 100%;
+            padding: 1rem;
+        }
+    }
+</style>
